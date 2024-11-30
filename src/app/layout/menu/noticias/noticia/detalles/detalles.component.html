@@ -1,0 +1,27 @@
+<div
+    *ngIf="noticia"
+    class="d-flex flex-column flex-lg-row gap-5 justify-content-between"
+>
+    <div class="col-12 col-lg-4 me-lg-2">
+        <h2 class="fw-bold">{{ mayuscula(noticia.titulo) }}</h2>
+        <p class="text-sm-end text-md-start fst-italic">
+            {{ mayuscula(noticia.autor) }}
+        </p>
+        <p>{{ mayuscula(noticia.descripcion) }}</p>
+        <button class="btn btn-primary mt-3 d-block d-md-inline" [routerLink]="['']">
+            <i class="bi bi-arrow-left-square"></i>
+            Regresar al menu
+        </button>
+    </div>
+    <div class="col-12 col-lg-6">
+        <img
+            [src]="noticia.imagenURL"
+            alt="Esta es una imagen de {{ noticia.titulo }}"
+            class="img-fluid"
+        />
+    </div>
+</div>
+
+<div *ngIf="!noticia">
+    <p>Ha un error, la noticia no se encontró</p>
+</div>

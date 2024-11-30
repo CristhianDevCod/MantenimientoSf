@@ -1,0 +1,11 @@
+<div *ngFor="let noticia of noticias">
+    <app-noticia 
+        [id]="noticia.id"
+        [nombreAutor]="noticia.autor"
+        [imagenNoticia]="noticia.imagenURL"
+        [tituloNoticia]="noticia.titulo"
+        [numMeGusta]="noticia.meGusta"
+        [numNoMeGuSTA]="noticia.noMeGusta"
+        [descripcion]="noticia.descripcion"
+    />
+</div>

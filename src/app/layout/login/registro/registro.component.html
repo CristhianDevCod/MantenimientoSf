@@ -1,0 +1,68 @@
+<h2>Registro de usuario</h2>
+<form [formGroup]="formReg" (submit)="onSubmit()">
+    <div>
+        <label for="correo" class="form-label">Correo</label>
+        <input
+            type="text"
+            name="correo"
+            class="form-control"
+            [ngClass]="{
+                'is-valid': isEmailValid(),
+                'is-invalid': !isEmailValid() && emailFocused
+            }"
+            (focus)="emailFocused = true"
+            id="correo"
+            placeholder="Ingresa tu correo eléctronico"
+            formControlName="formEmail"
+        />
+        <!-- feedback -->
+        <div class="valid-feedback">Correo adecuado</div>
+        <div class="invalid-feedback">Correo invalido</div>
+    </div>
+    <div>
+        <label for="contrasena1" class="form-label">Contraseña</label>
+        <div class="input-group">
+            <input
+                [type]="passwordVisible ? 'text': 'password'"
+                class="form-control"
+                [ngClass]="{
+                    'is-valid': isPasswordValid(),
+                    'is-invalid': !isPasswordValid() && passwordFocused
+                }"
+                (focus)="passwordFocused = true"
+                id="contrasena1"
+                aria-describedby="togglePassword"
+                name="contrasena1"
+                placeholder="Ingresa tu contraseña"
+                formControlName="formPass"
+            />
+            <button 
+                class="btn btn-outline-secondary"
+                type="button" (click)="togglePasswordVisibility()"
+            >
+                <i class="bi" [ngClass]="passwordVisible ? 'bi-eye' : 'bi-eye-slash'"></i>
+            </button>
+            <!-- feedback -->
+            <div class="valid-feedback">Contraseña adecuada</div>
+            <div class="invalid-feedback">Contraseña invalida</div>
+        </div>
+    </div>
+    <div class="d-flex my-4 justify-content-evenly">
+        <button 
+            class="btn btn-primary" 
+            type="submit"
+            [disabled]="!isEmailValid() && !isPasswordValid()"
+        >Crear usuario</button>
+        <button class="btn btn-success" [routerLink]="['/login']">
+            Iniciar Sesión
+        </button>
+    </div>
+
+    <div class="btn btn-warning my-3" 
+            [ngClass]="
+            {'d-none':!usuarioCreado}
+            "
+    >
+        <P class="m-0 fw-bold">Querido usuario, te has registrado correctamente</P>
+    </div>
+</form>
