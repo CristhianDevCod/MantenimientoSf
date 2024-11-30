@@ -47,3 +47,6 @@ README.md
 .firebase
 *-debug.log
 .runtimeconfig.json
+
+# Agrega la carpeta de las historias de usuario
+!/Historias de usuario/
